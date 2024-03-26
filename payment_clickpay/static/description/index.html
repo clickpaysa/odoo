@@ -1,94 +1,170 @@
-<h1 align="center">ClickPay - Odoo</h1>
-<p align="center"><i>The Official Odoo plugin for ClickPay</i></p>
-<div align="center">
-   <h2 align="center">Plugin features</h2>
-<h4>Embeded Forms</h4>
-<h4>Direct Apple Pay</h4>
-<h4>Automatic Invoice</h4>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>clickpay odoo</title>
+</head>
+<body>
+    <div class="Box-sc-g0xbh4-0 markdown-body container-lg"><div class="markdown-heading" dir="auto"><h1 align="center" class="heading-element" dir="auto">ClickPay - Odoo</h1><a id="user-content-clickpay---odoo" class="anchor" aria-label="Permalink: ClickPay - Odoo" href="#clickpay---odoo"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p align="center" dir="auto"><i>The Official Odoo plugin for ClickPay</i></p>
+<div align="center" dir="auto">
+   <div class="markdown-heading" dir="auto"><h2 align="center" class="heading-element" dir="auto">Plugin features</h2><a id="user-content-plugin-features" class="anchor" aria-label="Permalink: Plugin features" href="#plugin-features"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Embeded Forms</h4><a id="user-content-embeded-forms" class="anchor" aria-label="Permalink: Embeded Forms" href="#embeded-forms"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Direct Apple Pay</h4><a id="user-content-direct-apple-pay" class="anchor" aria-label="Permalink: Direct Apple Pay" href="#direct-apple-pay"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="markdown-heading" dir="auto"><h4 class="heading-element" dir="auto">Automatic Invoice</h4><a id="user-content-automatic-invoice" class="anchor" aria-label="Permalink: Automatic Invoice" href="#automatic-invoice"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
 </div>
+<hr data-sourcepos="10:1-11:0">
+<div class="markdown-heading" dir="auto"><h2 data-sourcepos="12:1-12:15" class="heading-element" dir="auto">Installation</h2><a id="user-content-installation" class="anchor" aria-label="Permalink: Installation" href="#installation"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="markdown-heading" dir="auto"><h3 data-sourcepos="14:1-14:28" class="heading-element" dir="auto">Install using FTP method</h3><a id="user-content-install-using-ftp-method" class="anchor" aria-label="Permalink: Install using FTP method" href="#install-using-ftp-method"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p data-sourcepos="16:1-16:44" dir="auto"><em>Note: Delete any previous ClickPay plugin.</em></p>
+<ol data-sourcepos="18:1-46:162" dir="auto">
+<li data-sourcepos="18:1-18:44">
+<p data-sourcepos="18:4-18:44" dir="auto">Download the latest release of the plugin</p>
+</li>
+<li data-sourcepos="19:1-20:16">
+<p data-sourcepos="19:4-20:16" dir="auto">Upload the contents of the folder in ODOO addons folder. (You can find the path for addon folders
+in odoo.conf)</p>
+</li>
+<li data-sourcepos="21:1-21:56">
+<p data-sourcepos="21:4-21:56" dir="auto">Login to your odoo as admin and navigate to settings.</p>
+</li>
+<li data-sourcepos="22:1-22:94">
+<p data-sourcepos="22:4-22:94" dir="auto">Scroll down to bottom of the page and click “Activate the Developer Mode (with Assets)”</p>
+</li>
+<li data-sourcepos="23:1-24:163">
+<p data-sourcepos="23:4-24:163" dir="auto">Wait for the page to load and Navigate to Apps. Click Update Apps List in the navigation menu. You
+can disable the developer mode now by following same steps in previous point. Wait for the operation to complete. Now click “Accounting” from the left menu.</p>
+</li>
+<li data-sourcepos="25:1-25:61">
+<p data-sourcepos="25:4-25:61" dir="auto">Here, find the module named “CLICKPAY Payment Module”.</p>
+</li>
+<li data-sourcepos="26:1-30:3">
+<p data-sourcepos="26:4-27:76" dir="auto">Click on “Install” button. Wait for the module to be installed. Navigate to “Invoicing” module. From
+the navigation menu, goto “Configuration” -&gt; “Payment Acquirers”.</p>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/135695828/316834006-891f6f43-38ec-465d-9f46-274e21946559.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTE0NTMyODMsIm5iZiI6MTcxMTQ1Mjk4MywicGF0aCI6Ii8xMzU2OTU4MjgvMzE2ODM0MDA2LTg5MWY2ZjQzLTM4ZWMtNDY1ZC05ZjQ2LTI3NGUyMTk0NjU1OS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwMzI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDMyNlQxMTM2MjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05ZmZjZjM0YjRiMWU1ZDRmMTNkZjI5YjU4ZmFlNTMwZDE3ZjY4ZTk4NTFmZGY5ZjljNWE4NzM1MjFiMTYyNzIyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.36kKOi2pLNc7EfP6ErB85ZMNkSURe92Sm_W15LW5MrQ"><img width="822" alt="Screenshot 2024-03-26 at 1 59 19 PM" src="https://private-user-images.githubusercontent.com/135695828/316834006-891f6f43-38ec-465d-9f46-274e21946559.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTE0NTMyODMsIm5iZiI6MTcxMTQ1Mjk4MywicGF0aCI6Ii8xMzU2OTU4MjgvMzE2ODM0MDA2LTg5MWY2ZjQzLTM4ZWMtNDY1ZC05ZjQ2LTI3NGUyMTk0NjU1OS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwMzI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDMyNlQxMTM2MjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05ZmZjZjM0YjRiMWU1ZDRmMTNkZjI5YjU4ZmFlNTMwZDE3ZjY4ZTk4NTFmZGY5ZjljNWE4NzM1MjFiMTYyNzIyJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.36kKOi2pLNc7EfP6ErB85ZMNkSURe92Sm_W15LW5MrQ" style="max-width: 100%;"></a>
+</li>
+<li data-sourcepos="31:1-31:58">
+<p data-sourcepos="31:4-31:58" dir="auto">Find “Clickpay Payment Gateway” and click Activate.</p>
+</li>
+<li data-sourcepos="32:1-46:162">
+<p data-sourcepos="32:5-32:68" dir="auto">Fill in the form entering the corresponding details in each tab.</p>
+<ul data-sourcepos="34:5-46:162" dir="auto">
+<li data-sourcepos="34:5-34:28">
+<p data-sourcepos="34:7-34:28" dir="auto">Change State to Enable</p>
+</li>
+<li data-sourcepos="35:5-38:95">
+<p data-sourcepos="35:7-35:25" dir="auto">Fill in credentials</p>
+<ul data-sourcepos="36:8-38:95" dir="auto">
+<li data-sourcepos="36:8-36:70"><strong>Profile ID</strong>: Enter the Profile ID of your ClickPay account</li>
+<li data-sourcepos="37:8-37:95"><strong>Server Key</strong>: <code>Merchant’s Dashboard &gt;&gt; Developers &gt;&gt; Key management &gt;&gt; Server Key</code></li>
+<li data-sourcepos="38:8-38:95"><strong>Client Key</strong>: <code>Merchant’s Dashboard &gt;&gt; Developers &gt;&gt; Key management &gt;&gt; Server Key</code></li>
+</ul>
+</li>
+<li data-sourcepos="39:5-39:53">
+<p data-sourcepos="39:7-39:53" dir="auto">Enable hosted or iframe method or managed form.</p>
+</li>
+<li data-sourcepos="40:5-40:61">
+<p data-sourcepos="40:7-40:61" dir="auto">In configuration tab, Enter the display name in website</p>
+</li>
+<li data-sourcepos="41:5-41:52">
+<p data-sourcepos="41:7-41:52" dir="auto">Configure other according to your requirments.</p>
+</li>
+<li data-sourcepos="42:5-46:162">
+<p data-sourcepos="42:7-44:70" dir="auto">Select Payment journal under Configuration tab. The Payment journal must have incoming
+payment set to clickpay. You can set this by clicking the arrow icon in front on Payment Journal
+field and then go to Incoming Payments tab and click Add a line.</p>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/135695828/316837138-bbe10908-fde2-48e2-a516-1e4753c640a3.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTE0NTMyODMsIm5iZiI6MTcxMTQ1Mjk4MywicGF0aCI6Ii8xMzU2OTU4MjgvMzE2ODM3MTM4LWJiZTEwOTA4LWZkZTItNDhlMi1hNTE2LTFlNDc1M2M2NDBhMy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwMzI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDMyNlQxMTM2MjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1kMzVhNzlmNGVjZjc0YWE3ZjY4YjE3OGY2MWI1YjBjMDRlY2ZiOTRjMTIwZDA1ZmQyNDNmMDQ3YTc4MzEzZmM5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.cq9fzeI1JcqwWB7Cw7xPy_ek4zdBWMMuIgwli_BMjpk"><img width="974" alt="Screenshot 2024-03-26 at 2 10 49 PM" src="https://private-user-images.githubusercontent.com/135695828/316837138-bbe10908-fde2-48e2-a516-1e4753c640a3.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTE0NTMyODMsIm5iZiI6MTcxMTQ1Mjk4MywicGF0aCI6Ii8xMzU2OTU4MjgvMzE2ODM3MTM4LWJiZTEwOTA4LWZkZTItNDhlMi1hNTE2LTFlNDc1M2M2NDBhMy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwMzI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDMyNlQxMTM2MjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1kMzVhNzlmNGVjZjc0YWE3ZjY4YjE3OGY2MWI1YjBjMDRlY2ZiOTRjMTIwZDA1ZmQyNDNmMDQ3YTc4MzEzZmM5JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.cq9fzeI1JcqwWB7Cw7xPy_ek4zdBWMMuIgwli_BMjpk" style="max-width: 100%;"></a>
+</li>
+</ul>
+</li>
+</ol>
+<hr data-sourcepos="47:1-48:0">
+<div class="markdown-heading" dir="auto"><h2 data-sourcepos="49:1-49:60" class="heading-element" dir="auto">Configure the Plugin for Direct Apple Pay on your website</h2><a id="user-content-configure-the-plugin-for-direct-apple-pay-on-your-website" class="anchor" aria-label="Permalink: Configure the Plugin for Direct Apple Pay on your website" href="#configure-the-plugin-for-direct-apple-pay-on-your-website"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ol data-sourcepos="51:1-64:0" dir="auto">
+<li data-sourcepos="51:1-51:66">
+<p data-sourcepos="51:4-51:66" dir="auto">Navigate to <code>"Invoicing" &gt;&gt; Configuration &gt;&gt; payment providers</code></p>
+</li>
+<li data-sourcepos="52:1-52:29">
+<p data-sourcepos="52:4-52:29" dir="auto">Open <code>ClickPay - ApplePay</code></p>
+</li>
+<li data-sourcepos="53:1-53:77">
+<p data-sourcepos="53:4-53:77" dir="auto">Please find the setup section below for the apple pay certificate creation</p>
+</li>
+<li data-sourcepos="54:1-54:67">
+<p data-sourcepos="54:4-54:67" dir="auto">Once certificates created upload the certificates in admin panel</p>
+</li>
+<li data-sourcepos="55:1-57:159">
+<p data-sourcepos="55:4-55:35" dir="auto">Add the Merchnat identifier name</p>
+<a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/135695828/316839078-d876163b-6b5c-4d04-a6ff-30d462766be8.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTE0NTMyODMsIm5iZiI6MTcxMTQ1Mjk4MywicGF0aCI6Ii8xMzU2OTU4MjgvMzE2ODM5MDc4LWQ4NzYxNjNiLTZiNWMtNGQwNC1hNmZmLTMwZDQ2Mjc2NmJlOC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwMzI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDMyNlQxMTM2MjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yZTI0NmQzYzIxZWI5MTI4MzA5NGRkNmZmYjlhYzg5NzFjOTY0OWJjZjlhNTgzYzM2ZDdhODNkOTc2MTViYzhkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.QgcNH8EKmWyiI_7oSeYQioYKr22s298vVLNMHZrao1M"><img width="876" alt="Screenshot 2024-03-26 at 2 12 34 PM" src="https://private-user-images.githubusercontent.com/135695828/316839078-d876163b-6b5c-4d04-a6ff-30d462766be8.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTE0NTMyODMsIm5iZiI6MTcxMTQ1Mjk4MywicGF0aCI6Ii8xMzU2OTU4MjgvMzE2ODM5MDc4LWQ4NzYxNjNiLTZiNWMtNGQwNC1hNmZmLTMwZDQ2Mjc2NmJlOC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwMzI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDMyNlQxMTM2MjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yZTI0NmQzYzIxZWI5MTI4MzA5NGRkNmZmYjlhYzg5NzFjOTY0OWJjZjlhNTgzYzM2ZDdhODNkOTc2MTViYzhkJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.QgcNH8EKmWyiI_7oSeYQioYKr22s298vVLNMHZrao1M" style="max-width: 100%;"></a>
+</li>
+<li data-sourcepos="58:1-61:91">
+<p data-sourcepos="58:4-58:33" dir="auto">Enter the primary credentials:</p>
+<ul data-sourcepos="59:4-61:91" dir="auto">
+<li data-sourcepos="59:4-59:66"><strong>Profile ID</strong>: Enter the Profile ID of your ClickPay account</li>
+<li data-sourcepos="60:4-60:91"><strong>Server Key</strong>: <code>Merchant’s Dashboard &gt;&gt; Developers &gt;&gt; Key management &gt;&gt; Server Key</code></li>
+<li data-sourcepos="61:4-61:91"><strong>Client Key</strong>: <code>Merchant’s Dashboard &gt;&gt; Developers &gt;&gt; Key management &gt;&gt; Server Key</code></li>
+</ul>
+</li>
+<li data-sourcepos="62:1-64:0">
+<p data-sourcepos="62:4-62:22" dir="auto">Click <code>Save Config</code></p>
+</li>
+</ol>
+<div class="markdown-heading" dir="auto"><h2 data-sourcepos="65:1-65:8" class="heading-element" dir="auto">Setup</h2><a id="user-content-setup" class="anchor" aria-label="Permalink: Setup" href="#setup"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ol data-sourcepos="67:1-69:0" dir="auto">
+<li data-sourcepos="67:1-67:62">You must have a Apple Developer Account To use this Feature</li>
+<li data-sourcepos="68:1-69:0">The Domain URL which you want to display the ApplePay Button. It should be verfied under same Apple Developer Account and under same merchant ID which you will create Certificates</li>
+</ol>
+<p data-sourcepos="70:1-70:116" dir="auto"><a target="_blank" rel="noopener noreferrer" href="https://private-user-images.githubusercontent.com/135695828/258054900-2b6c16ba-58b3-44ed-a690-dfeb7762b9cb.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTE0NTMyODMsIm5iZiI6MTcxMTQ1Mjk4MywicGF0aCI6Ii8xMzU2OTU4MjgvMjU4MDU0OTAwLTJiNmMxNmJhLTU4YjMtNDRlZC1hNjkwLWRmZWI3NzYyYjljYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwMzI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDMyNlQxMTM2MjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01N2E1ODY1MTRjMzY5OWJlZTQ2MGFhMGYzMjMwZTBkYWU1OWM4M2ZiNjQ1ZmQ4MTk4MDc4MzE4Mzk5NzNiODY1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.RtAzQB1cMAsjlDCaY6_etCu_8BDyltxeeQqBvmAu3XU"><img src="https://private-user-images.githubusercontent.com/135695828/258054900-2b6c16ba-58b3-44ed-a690-dfeb7762b9cb.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTE0NTMyODMsIm5iZiI6MTcxMTQ1Mjk4MywicGF0aCI6Ii8xMzU2OTU4MjgvMjU4MDU0OTAwLTJiNmMxNmJhLTU4YjMtNDRlZC1hNjkwLWRmZWI3NzYyYjljYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQwMzI2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MDMyNlQxMTM2MjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01N2E1ODY1MTRjMzY5OWJlZTQ2MGFhMGYzMjMwZTBkYWU1OWM4M2ZiNjQ1ZmQ4MTk4MDc4MzE4Mzk5NzNiODY1JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.RtAzQB1cMAsjlDCaY6_etCu_8BDyltxeeQqBvmAu3XU" alt="image" style="max-width: 100%;"></a></p>
+<ol start="3" data-sourcepos="72:1-85:0" dir="auto">
+<li data-sourcepos="72:1-72:111">
+<p data-sourcepos="72:4-72:111" dir="auto">Create two certificates (Apple Pay Payment Processing Certificate &amp; Apple Pay Merchant Identity Certificate)</p>
+</li>
+<li data-sourcepos="73:1-75:145">
+<p data-sourcepos="73:4-73:67" dir="auto">Create Apple Pay Payment Processing Certificate using below Link</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>https://support.clickpay.com.sa/en/support/solutions/articles/73000593115-how-to-configure-apple-pay-certificate-in-my-clickpay-dashboard-
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="https://support.clickpay.com.sa/en/support/solutions/articles/73000593115-how-to-configure-apple-pay-certificate-in-my-clickpay-dashboard-" tabindex="0" role="button">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+</li>
+<li data-sourcepos="76:1-85:0">
+<p data-sourcepos="76:4-76:67" dir="auto">Create Apple Pay Merchant Identity Certificate using below Steps</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>openssl req -sha256 -nodes -newkey rsa:2048 -keyout merchant-cert.key -out merchant-cert.csr   (Create the CSR and Key File)
 
-- - -
+Upload the CSR in Apple Developer portal to create merchant identifier
+Once Created Download the Certificate and Convert the downloaded cer to crt using below command
 
-## Installation
+openssl x509 -inform der -in merchant_id.cer -out merchant-cert.crt
+</code></pre><div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0 tooltipped-no-delay" data-copy-feedback="Copied!" data-tooltip-direction="w" value="openssl req -sha256 -nodes -newkey rsa:2048 -keyout merchant-cert.key -out merchant-cert.csr   (Create the CSR and Key File)
 
-### Install using FTP method
+Upload the CSR in Apple Developer portal to create merchant identifier
+Once Created Download the Certificate and Convert the downloaded cer to crt using below command
 
-*Note: Delete any previous ClickPay plugin.*
-
-1. Download the latest release of the plugin
-2. Upload the contents of the folder in ODOO addons folder. (You can find the path for addon folders
-   in odoo.conf)
-3. Login to your odoo as admin and navigate to settings.
-4. Scroll down to bottom of the page and click “Activate the Developer Mode (with Assets)”
-5. Wait for the page to load and Navigate to Apps. Click Update Apps List in the navigation menu. You
-   can disable the developer mode now by following same steps in previous point. Wait for the operation to complete. Now click “Accounting” from the left menu.
-6. Here, find the module named “CLICKPAY Payment Module”.
-7. Click on “Install” button. Wait for the module to be installed. Navigate to “Invoicing” module. From
-   the navigation menu, goto “Configuration” -> “Payment Acquirers”.
-   
-   <img width="822" alt="Screenshot 2024-03-26 at 1 59 19 PM" src="https://github.com/clickpaysa/odoo/assets/135695828/891f6f43-38ec-465d-9f46-274e21946559">
-   
-9. Find “Clickpay Payment Gateway” and click Activate.
-10. Fill in the form entering the corresponding details in each tab.
-    
-    * Change State to Enable
-    * Fill in credentials
-       - **Profile ID**: Enter the Profile ID of your ClickPay account
-       - **Server Key**: `Merchant’s Dashboard >> Developers >> Key management >> Server Key`
-       - **Client Key**: `Merchant’s Dashboard >> Developers >> Key management >> Server Key`
-    * Enable hosted or iframe method or managed form.
-    * In configuration tab, Enter the display name in website
-    * Configure other according to your requirments.
-    * Select Payment journal under Configuration tab. The Payment journal must have incoming
-      payment set to clickpay. You can set this by clicking the arrow icon in front on Payment Journal
-      field and then go to Incoming Payments tab and click Add a line.
-      
-      <img width="974" alt="Screenshot 2024-03-26 at 2 10 49 PM" src="https://github.com/clickpaysa/odoo/assets/135695828/bbe10908-fde2-48e2-a516-1e4753c640a3">
-- - -
-
-## Configure the Plugin for Direct Apple Pay on your website
-
-1. Navigate to `"Invoicing" >> Configuration >> payment providers`
-2. Open `ClickPay - ApplePay`
-3. Please find the setup section below for the apple pay certificate creation
-5. Once certificates created upload the certificates in admin panel
-6. Add the Merchnat identifier name
-   
-   <img width="876" alt="Screenshot 2024-03-26 at 2 12 34 PM" src="https://github.com/clickpaysa/odoo/assets/135695828/d876163b-6b5c-4d04-a6ff-30d462766be8">
-7. Enter the primary credentials:
-   - **Profile ID**: Enter the Profile ID of your ClickPay account
-   - **Server Key**: `Merchant’s Dashboard >> Developers >> Key management >> Server Key`
-   - **Client Key**: `Merchant’s Dashboard >> Developers >> Key management >> Server Key`
-8. Click `Save Config`
-
-
-## Setup
-
-1. You must have a Apple Developer Account To use this Feature
-2. The Domain URL which you want to display the ApplePay Button. It should be verfied under same Apple Developer Account and under same merchant ID which you will create Certificates
-
-![image](https://github.com/clickpaysa/Direct_ApplePay_on_Web/assets/135695828/2b6c16ba-58b3-44ed-a690-dfeb7762b9cb)
- 
-3. Create two certificates (Apple Pay Payment Processing Certificate & Apple Pay Merchant Identity Certificate)
-4. Create Apple Pay Payment Processing Certificate using below Link
-
-       https://support.clickpay.com.sa/en/support/solutions/articles/73000593115-how-to-configure-apple-pay-certificate-in-my-clickpay-dashboard-
-5. Create Apple Pay Merchant Identity Certificate using below Steps
-
-       openssl req -sha256 -nodes -newkey rsa:2048 -keyout merchant-cert.key -out merchant-cert.csr   (Create the CSR and Key File)
-   
-       Upload the CSR in Apple Developer portal to create merchant identifier
-       Once Created Download the Certificate and Convert the downloaded cer to crt using below command
-   
-       openssl x509 -inform der -in merchant_id.cer -out merchant-cert.crt
-
-
-## Log Access
-
-### ClickPay custome log
-
-1. Access `debug_Clickpay.log` file found at: `/var/log/debug_Clickpay.log`
-
-- - -
-
-Done
+openssl x509 -inform der -in merchant_id.cer -out merchant-cert.crt" tabindex="0" role="button">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+</li>
+</ol>
+<div class="markdown-heading" dir="auto"><h2 data-sourcepos="86:1-86:13" class="heading-element" dir="auto">Log Access</h2><a id="user-content-log-access" class="anchor" aria-label="Permalink: Log Access" href="#log-access"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="markdown-heading" dir="auto"><h3 data-sourcepos="88:1-88:24" class="heading-element" dir="auto">ClickPay custome log</h3><a id="user-content-clickpay-custome-log" class="anchor" aria-label="Permalink: ClickPay custome log" href="#clickpay-custome-log"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ol data-sourcepos="90:1-91:0" dir="auto">
+<li data-sourcepos="90:1-91:0">Access <code>debug_Clickpay.log</code> file found at: <code>/var/log/debug_Clickpay.log</code></li>
+</ol>
+<hr data-sourcepos="92:1-93:0">
+<p data-sourcepos="94:1-94:4" dir="auto">Done</p>
+</div>
+</body>
+</html>
