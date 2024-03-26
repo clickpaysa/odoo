@@ -102,20 +102,13 @@ class PaymentTransaction(models.Model):
         reference = post_data.get('reference')
         values = post_data.get('values')
         code = post_data.get('code')
-        # base_url = self.provider_id.get_base_url()
-        base_url = "https://ml.brstdev.com"
-        # base_url 
-        # return_url = "https://stack.brstdev.com:5016/payment/click/return"
+        base_url = self.provider_id.get_base_url()
         return_url = urls.url_join(
             base_url, f'{clickpayController._return_url}'
         )
-        # return_url = 'https://stack.brstdev.com/payment/clickpay/return'
-        # webhook_url = "https://webhook.site/36c271b9-7650-4691-9012-52296fa37d8e/"
-        # callback_url = "https://ml.brstdev.com/payment/clickpay/webhooks"
         callback_url = urls.url_join(
             base_url, f'{clickpayController._callback_url}/{reference}/{code}'
         )  
-        # logging.getLogger(self)
         
         partner_id = values.get('partner')
         partner = self.env['res.partner'].sudo().browse(int(partner_id))
@@ -176,9 +169,7 @@ class PaymentTransaction(models.Model):
             payload['framed_return_top'] = True
             payload['payment_methods'] = ['applepay',]
         else: #---- clickpay ---
-            payload['cart_currency'] = 'INR'
             payload['return'] = return_url
-            # payload['return'] = 'https://ml.brstdev.com/payment/status'
             payload['callback'] = callback_url
         
         return payload
