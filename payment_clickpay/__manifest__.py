@@ -19,7 +19,7 @@
 		'data/payment_icon_data.xml',
         'data/payment_provider_data.xml',
     ],
-    'images': ['images/main_screenshot.gif'],
+    'images': ['images/main_screenshot.png'],
     'application': True,
     'installable': True,
 }
