@@ -6,7 +6,7 @@
     'summary': "Clickpay Payment Gateway Plugin allows merchants to accept Payments.",
     'author': 'TechSupport',
     'website': 'https://www.clickpay.com.sa',
-    'license': 'OPL-1'
+    'license': 'OPL-1',
     'depends': ['payment'],
     'assets': {
         'web.assets_frontend': [
