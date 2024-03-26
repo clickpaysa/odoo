@@ -24,7 +24,6 @@ class clickpayController(http.Controller):
     
     @http.route('/payment/clickpay/applepay/request',methods=['POST'],auth='public',csrf=False)
     def get_payment_cartinfo(self,**post):
-        print('\n\n Apple Pay Request : ',json.loads(request.httprequest.data).get('url'),'\n\n')
         headers = {
             'Content-Type':'application/json',
             'authorization': request.env['payment.provider'].sudo().search([['code','=','clickpayapplepay']]).clickpayapplepay_server_key,
@@ -49,11 +48,7 @@ class clickpayController(http.Controller):
                 if text is False : raise ValueError('Both files should be added to proceed : (certificate,key)')
                 file.write(base64.decodebytes(text).decode())
             cert =  (ssl_cert_path, cert_key_path)
-            print('\n Payment Request Url : ',url,'\n')
-            print('\n Payment Request Headers : ',headers,'\n')
-            print('\n Payment Request Payload : ',payload,'\n')
             response = requests.post(url,headers=headers,json=payload,verify=True,cert=cert)
-            print('\n Payment Request Response :',response.text,'\n')
             return request.make_response(json.dumps(response.json()), headers={'Content-Type': 'application/json'})
         except Exception as e :
             print('error at get_payment_carinfo : ',e)
@@ -63,23 +58,19 @@ class clickpayController(http.Controller):
     @http.route('/payment/clickpay/applepay/make_payment',methods=['POST'],auth='public',csrf=False)
     def applepay_make_payment(self,**post):
         data = json.loads(request.httprequest.data)
-        print('\n\n Apple Pay Request json : ',data,'\n\n')
         server_key = request.env['payment.provider'].search([['code','=','clickpayapplepay']]).clickpayapplepay_server_key
         if not server_key:_logger.exception("Server key must be set for clickpayapplepay");raise ValueError('Server key must be set for clickpayapplepay')
         headers = {'Content-Type':'application/json','Authorization': server_key }
         payload = request.env['payment.transaction'].sudo()._generate_clickpay_payment(data) 
         if not payload: return request.make_response(json.dumps({}),headers={'Content-Type':'application/json'})
         payload['apple_pay_token'] = data.get('payment_token')
-        print('\n\n','Make Payment Paylaod : ',payload,'\n\n')
         response = requests.post("https://secure.clickpay.com.sa/payment/request",headers=headers,json=payload)
-        print('\n Make Payment Response : ',response.text,'\n')
         return request.make_response(json.dumps(response.json()), headers={'Content-Type': 'application/json'})
 
     @http.route('/payment/clickpay/request',methods=['post','get'],type='http',csrf=False)
     def payment_clickpay_request(self,**data):
         """ Process the notification data sent by clik after redirection from checkout.
         :param dict data: The notification data."""
-        print('\n\n',data,'\n\n')
         url = 'https://secure.clickpay.com.sa/payment/request'
         headers = {
                 'authorization': eval(f"request.env['payment.provider'].search([['code','=','{data.get('code')}']]).{data.get('code')}_server_key"),
@@ -88,7 +79,6 @@ class clickpayController(http.Controller):
 
             }
         cookies = {'session_id':request.httprequest.cookies.get('session_id')}
-        print('\n\n Final cookies : ',cookies,'\n\n')
         data['values'] = {'partner':data.get('partner'),'currency':data.get('currency'),'amount':data.get('amount')}
         req_json = request.env['payment.transaction'].sudo()._generate_clickpay_payment(data)
         req_json['payment_token'] = data.get('token')
@@ -116,12 +106,10 @@ class clickpayController(http.Controller):
                     value = eval(f"request.env['payment.provider'].sudo().search([['code','=','clickpayapplepayhosted']]).clickpayapplepayhosted_{field}")
                     if not value: raise ValueError((field)+' is requeried to accept payments with applepayhosted .')
                 payload = request.env['payment.transaction'].sudo()._generate_clickpay_payment(post)
-                print('payload generated : ',payload)
                 url = 'https://secure.clickpay.com.sa/payment/request'
                 server_key = request.env['payment.provider'].sudo().search([['code','=','clickpayapplepayhosted']]).clickpayapplepayhosted_server_key
                 headers = {'Content-Type':'applicationn/json','authorization':server_key}
                 response_ = requests.post(url=url,json=payload,headers=headers)
-                print('\n\nResponnse from clickpay : ',response_.text,'\n\n')
                 return response_.json()
             except Exception as e :
                 print('handle_iframe_orders_from_checkout : ',e)
@@ -134,7 +122,6 @@ class clickpayController(http.Controller):
                     value = eval(f"request.env['payment.provider'].sudo().search([['code','=','clickpayapplepay']]).clickpayapplepay_{field}")
                     if not value: raise ValueError((field)+' is requeried to accept payments with applepay .')
                 payload = request.env['payment.transaction'].sudo()._generate_clickpay_payment(post) 
-                print('payload generated : ',payload)
                 cart_currency = str(payload.get('cart_currency')) 
                 amount = str(payload.get('cart_amount')) 
                 name = payload.get('customer_details').get('name')
@@ -213,12 +200,9 @@ class clickpayController(http.Controller):
         """ Process the notification data sent by clik after redirection from checkout.
         :param dict data: The notification data.
         """
-        print('sesssionid : ',request.httprequest.cookies.get('session_id'))
         if data.get('respStatus') == 'A':
-            print("Handling redirection from clickpay True with data : ",data)
             return request.redirect('/payment/status')
         else:
-            print("Handling redirection from clickpay False with data : ",data)
             return request.redirect('/shop/payment')
 
     
@@ -233,14 +217,11 @@ class clickpayController(http.Controller):
         _logger.info("Callback received from payment gateway with code:\n%s", pprint.pformat(code))
         try:
             payment_result = data.get('payment_result')
-            print('payment result : ',payment_result)
             if payment_result.get('response_status') == 'A':data['status'] = 'completed' 
             elif payment_result.get('response_status') == 'C':data['status'] = 'canceled'
             else: data['status'] = 'failed'
-            print(data['status'])
             tx_sudo = request.env['payment.transaction'].sudo()._get_tx_from_notification_data(code, data)
             self.verify_signature(body,signature,server_key)
-            print('\n\n',tx_sudo._handle_notification_data(code, data),'\n\n')
         except Exception as e:
             _logger.exception("An error occurred while processing webhook: %s", str(e))
         return 'Ok'
