@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="payment_provider_form" model="ir.ui.view">
+        <field name="name">Clickpay Payment Gateway Form</field>
+        <field name="model">payment.provider</field>
+        <field name="inherit_id" ref="payment.payment_provider_form"/>
+        <field name="arch" type="xml">
+            <group name="provider_credentials" position="inside">
+                <group attrs="{'invisible': [('code', '!=', 'clickpay')]}">
+                    <!-- <field name="clik_api_key" string="API Key" attrs="{'required':[ ('code', '=', 'clickpay'), ('state', '!=', 'disabled')]}"/> -->
+                    <field name="app_version" readonly="1"/>
+                    <!-- <field name="enabled"/>
+                    <field name="title"/> -->
+                    <field name="clickpay_endpoint_region"/>
+                    <field name="clickpay_profile_id"/>
+                    <field name="clickpay_server_key"/>
+                    <field name="clickpay_client_key"/>
+                    <field name="clickpay_iframe_mode"/>
+                    <!-- <field name="clickpay_payment_currency"/> -->
+                    <field name="clickpay_allow_ipn_notifications"/>
+                    <field name="clickpay_ipn_url" readonly="1"/>
+                    <!-- <field name="clickpay_successful_order_status"/>
+                    <field name="clickpay_failed_order_status"/> -->
+                    <!-- <field name="clickpay_refill_cart_on_failure"/> -->
+                    <!-- <field name="clickpay_send_order_confirmation_email"/> -->
+                    <field name="clickpay_hide_shipping_info"/>
+                    <field name="clickpay_payment_action"/>
+                    <field name="clickpay_enable_tokenization"/>
+                    <!-- <field name="clickpay_collect_payment_before_order"/> -->
+                    <!-- <field name="clickpay_automatic_invoice"/> -->
+                    <!-- <field name="clickpay_email_customer"/> -->
+                    <!-- <field name="clik_api_salt" string="Salt" attrs="{'required':[ ('code', '=', 'clickpay'), ('state', '!=', 'disabled')]}" password="True"/> -->
+                </group>
+                <group attrs="{'invisible': [('code', '!=', 'clickpaymada')]}">
+                    <field name="app_version" readonly="1"/>
+                    <field name="clickpaymada_endpoint_region"/>
+                    <field name="clickpaymada_profile_id"/>
+                    <field name="clickpaymada_server_key"/>
+                    <field name="clickpaymada_client_key"/>
+                    <field name="clickpaymada_iframe_mode"/>
+                    <!-- <field name="clickpaymada_payment_currency"/> -->
+                    <field name="clickpaymada_allow_ipn_notifications"/>
+                    <field name="clickpaymada_ipn_url" readonly="1"/>
+                    <!-- <field name="clickpaymada_successful_order_status"/>
+                    <field name="clickpaymada_failed_order_status"/> -->
+                    <!-- <field name="clickpaymada_refill_cart_on_failure"/> -->
+                    <!-- <field name="clickpaymada_send_order_confirmation_email"/> -->
+                    <field name="clickpaymada_hide_shipping_info"/>
+                    <field name="clickpaymada_payment_action"/>
+                    <field name="clickpaymada_enable_tokenization"/>
+                    <!-- <field name="clickpaymada_collect_payment_before_order"/> -->
+                    <!-- <field name="clickpaymada_automatic_invoice"/> -->
+                    <!-- <field name="clickpaymada_email_customer"/> -->
+                </group>
+                <group attrs="{'invisible': [('code', '!=', 'clickpaycard')]}">
+                    <field name="app_version" readonly="1"/>
+                    <field name="clickpaycard_endpoint_region"/>
+                    <field name="clickpaycard_profile_id"/>
+                    <field name="clickpaycard_server_key"/>
+                    <field name="clickpaycard_client_key"/>
+                    <field name="clickpaycard_iframe_mode"/>
+                    <!-- <field name="clickpaycard_payment_currency"/> -->
+                    <field name="clickpaycard_allow_ipn_notifications"/>
+                    <field name="clickpaycard_ipn_url" readonly="1"/>
+                    <!-- <field name="clickpaycard_successful_order_status"/>
+                    <field name="clickpaycard_failed_order_status"/> -->
+                    <!-- <field name="clickpaycard_refill_cart_on_failure"/> -->
+                    <!-- <field name="clickpaycard_send_order_confirmation_email"/> -->
+                    <field name="clickpaycard_hide_shipping_info"/>
+                    <field name="clickpaycard_payment_action"/>
+                    <field name="clickpaycard_enable_tokenization"/>
+                    <!-- <field name="clickpaycard_collect_payment_before_order"/> -->
+                    <!-- <field name="clickpaycard_automatic_invoice"/> -->
+                    <!-- <field name="clickpaycard_email_customer"/> -->
+                </group>
+                <group attrs="{'invisible': [('code', '!=', 'clickpayamex')]}">
+                    <field name="app_version" readonly="1"/>
+                    <field name="clickpayamex_endpoint_region"/>
+                    <field name="clickpayamex_profile_id"/>
+                    <field name="clickpayamex_server_key"/>
+                    <field name="clickpayamex_client_key"/>
+                    <field name="clickpayamex_iframe_mode"/>
+                    <!-- <field name="clickpayamex_payment_currency"/> -->
+                    <field name="clickpayamex_allow_ipn_notifications"/>
+                    <field name="clickpayamex_ipn_url" readonly="1"/>
+                    <!-- <field name="clickpayamex_successful_order_status"/>
+                    <field name="clickpayamex_failed_order_status"/> -->
+                    <!-- <field name="clickpayamex_refill_cart_on_failure"/> -->
+                    <!-- <field name="clickpayamex_send_order_confirmation_email"/> -->
+                    <field name="clickpayamex_hide_shipping_info"/>
+                    <field name="clickpayamex_payment_action"/>
+                    <field name="clickpayamex_enable_tokenization"/>
+                    <!-- <field name="clickpayamex_collect_payment_before_order"/> -->
+                    <!-- <field name="clickpayamex_automatic_invoice"/> -->
+                    <!-- <field name="clickpayamex_email_customer"/> -->
+                </group>
+                <group attrs="{'invisible': [('code', '!=', 'clickpayapplepay')]}">
+                    <field name="app_version" readonly="1"/>
+                    <field name="clickpayapplepay_endpoint_region"/>
+                    <field name="clickpayapplepay_profile_id"/>
+                    <field name="clickpayapplepay_server_key"/>
+                    <field name="clickpayapplepay_client_key"/>
+                    <field name="clickpayapplepay_merchantIdentifier"/>
+                    <field name="clickpayapplepay_displayName"/>
+                    <field name="clickpayapplepay_initiative"/>
+                    <field name="clickpayapplepay_initiativeContext"/>
+                    <field name="clickpayapplepay_cert_file"/>
+                    <field name="clickpayapplepay_key_file"/>
+                    <!-- <field name="clickpayapplepay_payment_currency"/> -->
+                    <field name="clickpayapplepay_allow_ipn_notifications"/>
+                    <field name="clickpayapplepay_ipn_url" readonly="1"/>
+                    <!-- <field name="clickpayapplepay_successful_order_status"/>
+                    <field name="clickpayapplepay_failed_order_status"/> -->
+                    <!-- <field name="clickpayapplepay_refill_cart_on_failure"/> -->
+                    <!-- <field name="clickpayapplepay_send_order_confirmation_email"/> -->
+                    <field name="clickpayapplepay_hide_shipping_info"/>
+                    <field name="clickpayapplepay_payment_action"/>
+                    <field name="clickpayapplepay_enable_tokenization"/>
+                    <!-- <field name="clickpayapplepay_collect_payment_before_order"/> -->
+                    <!-- <field name="clickpayapplepay_automatic_invoice"/> -->
+                    <!-- <field name="clickpayapplepay_email_customer"/> -->
+                </group>
+                <group attrs="{'invisible': [('code', '!=', 'clickpayapplepayhosted')]}">
+                    <field name="app_version" readonly="1"/>
+                    <field name="clickpayapplepayhosted_endpoint_region"/>
+                    <field name="clickpayapplepayhosted_profile_id"/>
+                    <field name="clickpayapplepayhosted_server_key"/>
+                    <field name="clickpayapplepayhosted_merchantIdentifier"/>
+                    <field name="clickpayapplepayhosted_displayName"/>
+                    <field name="clickpayapplepayhosted_initiative"/>
+                    <field name="clickpayapplepayhosted_initiativeContext"/>
+                    <field name="clickpayapplepayhosted_cert_file"/>
+                    <field name="clickpayapplepayhosted_key_file"/>
+                    <!-- <field name="clickpayapplepay_payment_currency"/> -->
+                    <field name="clickpayapplepayhosted_allow_ipn_notifications"/>
+                    <field name="clickpayapplepayhosted_ipn_url" readonly="1"/>
+                    <!-- <field name="clickpayapplepay_successful_order_status"/> -->
+                    <!-- <field name="clickpayapplepay_failed_order_status"/> -->
+                    <!-- <field name="clickpayapplepay_refill_cart_on_failure"/> -->
+                    <!-- <field name="clickpayapplepay_send_order_confirmation_email"/> -->
+                    <field name="clickpayapplepayhosted_hide_shipping_info"/>
+                    <field name="clickpayapplepayhosted_payment_action"/>
+                    <field name="clickpayapplepayhosted_enable_tokenization"/>
+                    <!-- <field name="clickpayapplepay_collect_payment_before_order"/> -->
+                    <!-- <field name="clickpayapplepay_automatic_invoice"/> -->
+                    <!-- <field name="clickpayapplepay_email_customer"/> -->
+                </group>
+                <!-- <group attrs="{'invisible': [('code', '!=', 'clik')]}">
+                    <field name="clickpay_profile_id" string="Profile IDs" attrs="{'required': [('code', '=', 'clik'), ('state', '!=', 'disabled')]}"/>
+                    <field name="clickpay_server_key" string="Server Key" attrs="{'required': [('code', '=', 'clik'), ('state', '!=', 'disabled')]}" password="True"/>
+                </group> -->
+            </group>
+        </field>
+    </record>
+
+
+    
+    <!-- <record id="transaction_form_clickpay" model="ir.ui.view">
+        <field name="name">clickpay Transaction Form</field>
+        <field name="model">payment.transaction</field>
+        <field name="inherit_id" ref="payment.payment_transaction_form" />
+        <field name="arch" type="xml">
+            <field name="provider_reference" position="after">
+                <field name="clickpay_payment_request_id" attrs="{'invisible': [('provider_code','not in',('clickpay'))]}" />
+                <field name="clickpay_payment_id" attrs="{'invisible': [('provider_code','not in',('clickpay'))]}" />
+                <field name="clickpay_payment_amount" attrs="{'invisible': [('provider_code','not in',('clickpay'))]}" />
+                <field name="clickpay_payment_currency" attrs="{'invisible': [('provider_code','not in',('clickpay'))]}" />
+                <field name="clickpay_payment_status" attrs="{'invisible': [('provider_code','not in',('clickpay'))]}" />
+                <field name="clickpay_refund_id" attrs="{'invisible': [('provider_code','not in',('clickpay'))]}" />
+                <field name="clickpay_refund_amount" attrs="{'invisible': [('provider_code','not in',('clickpay'))]}" />
+                <field name="clickpay_refund_currency" attrs="{'invisible': [('provider_code','not in',('clickpay'))]}" />
+                <field name="clickpay_refund_createdat" attrs="{'invisible': [('provider_code','not in',('clickpay'))]}" />
+            </field>
+        </field>
+    </record> -->
+</odoo>
+

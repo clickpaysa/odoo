@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="redirect_form">
+        <script src="https://secure.clickpay.com.sa/payment/js/paylib.js"></script>
+        <div id="payment_iframe_div" style="display:none;" >
+        </div>
+    </template> 
+    <template id="clickpayapple_form">
+    <script>
+    var scriptElement = document.createElement("script");
+    scriptElement.src = "https://applepay.cdn-apple.com/jsapi/v1/apple-pay-sdk.js";
+    document.getElementsByTagName('head')[0].appendChild(scriptElement);
+    </script>
+        <t t-extend="website.layout">
+            <t t-jquery="head" t-operation="after">
+                <style type="text/css">
+                    apple-pay-button {
+                        --apple-pay-button-width: 150px;
+                        --apple-pay-button-height: 30px;
+                        --apple-pay-button-border-radius: 3px;
+                        --apple-pay-button-padding: 0px 0px;
+                        --apple-pay-button-box-sizing: border-box;
+                        display: block;
+                    }
+                </style>
+            </t>
+        </t>
+        <div>
+        <apple-pay-button buttonstyle="black" type="plain" locale="en" id="applepaybutton"></apple-pay-button>
+        </div>
+        <div>
+        <span id="pnl_log"></span>
+        </div>
+    </template> 
+    <template id="clickpayapplehosted_form">
+    </template> 
+</odoo>

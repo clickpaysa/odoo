@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="payment_provider_clickpay" model="payment.provider">
+        <field name="name">ClickPay - All</field>
+        <field name="display_as">ClickPay - All</field>
+        <field name="code">clickpay</field>
+        <field name="image_128" type="base64" file="payment_clickpay/static/description/logo.png"/>
+        <field name="module_id" ref="base.module_payment_clickpay"/>
+        <field name="inline_form_view_id" ref="redirect_form"/>
+        <!-- <field name="inline_form_view_id" ref="clickpay_test_checkout_inline_form"/> -->
+    </record>
+    <record id="payment_provider_clickpaycard" model="payment.provider">
+        <field name="name">ClickPay - CreditCard</field>
+        <field name="display_as">ClickPay - CreditCard</field>
+        <field name="code">clickpaycard</field>
+        <field name="image_128" type="base64" file="payment_clickpay/static/description/logo.png"/>
+        <field name="module_id" ref="base.module_payment_clickpay"/>
+        <field name="inline_form_view_id" ref="redirect_form"/>
+        <!-- <field name="inline_form_view_id" ref="clickpay_test_checkout_inline_form"/> -->
+    </record>    
+    <record id="payment_provider_clickpaymada" model="payment.provider">
+        <field name="name">ClickPay - Mada</field>
+        <field name="display_as">ClickPay - Mada</field>
+        <field name="code">clickpaymada</field>
+        <field name="image_128" type="base64" file="payment_clickpay/static/description/logo.png"/>
+        <field name="module_id" ref="base.module_payment_clickpay"/>
+        <field name="inline_form_view_id" ref="redirect_form"/>
+        <!-- <field name="inline_form_view_id" ref="clickpay_test_checkout_inline_form"/> -->
+    </record>
+    <record id="payment_provider_clickpayamex" model="payment.provider">
+        <field name="name">ClickPay - Amex</field>
+        <field name="display_as">ClickPay - Amex</field>
+        <field name="code">clickpayamex</field>
+        <field name="image_128" type="base64" file="payment_clickpay/static/description/logo.png"/>
+        <field name="module_id" ref="base.module_payment_clickpay"/>
+        <field name="inline_form_view_id" ref="redirect_form"/>
+        <!-- <field name="inline_form_view_id" ref="clickpay_test_checkout_inline_form"/> -->
+    </record>
+    
+	<record id="payment_provider_clickpayapplepay" model="payment.provider">
+        <field name="name">ClickPay - ApplePay</field>
+        <field name="display_as">ClickPay - ApplePay</field>
+        <field name="code">clickpayapplepay</field>
+        <field name="image_128" type="base64" file="payment_clickpay/static/description/logo.png"/>
+        <field name="module_id" ref="base.module_payment_clickpay"/>
+        <field name="inline_form_view_id" ref="clickpayapple_form"/>
+        <!-- <field name="inline_form_view_id" ref="clickpay_test_checkout_inline_form"/> -->
+    </record>
+    
+    <record id="payment_provider_clickpayapplepayhosted" model="payment.provider">
+        <field name="name">ClickPay - ApplePay Hosted</field>
+        <field name="display_as">ClickPay - ApplePay Hosted</field>
+        <field name="code">clickpayapplepayhosted</field>
+        <field name="image_128" type="base64" file="payment_clickpay/static/description/logo.png"/>
+        <field name="module_id" ref="base.module_payment_clickpay"/>
+        <field name="inline_form_view_id" ref="clickpayapplehosted_form"/>
+        <!-- <field name="inline_form_view_id" ref="clickpay_test_checkout_inline_form"/> -->
+    </record>
+
+	<record id="payment_method_clickpay" model="account.payment.method">
+		<field name="name"><![CDATA[Clickpay Payment Gateway]]></field>
+		<field name="code">clickpay</field>
+		<field name="payment_type">inbound</field>
+	</record>
+	<record id="payment_method_clickpaycard" model="account.payment.method">
+		<field name="name"><![CDATA[ClickPay - CreditCard]]></field>
+		<field name="code">clickpaycard</field>
+		<field name="payment_type">inbound</field>
+	</record>
+    <record id="payment_method_clickpaymada" model="account.payment.method">
+		<field name="name"><![CDATA[ClickPay - Mada]]></field>
+		<field name="code">clickpaymada</field>
+		<field name="payment_type">inbound</field>
+	</record>
+    <record id="payment_method_clickpayamex" model="account.payment.method">
+		<field name="name"><![CDATA[ClickPay - Amex]]></field>
+		<field name="code">clickpayamex</field>
+		<field name="payment_type">inbound</field>
+	</record>
+    <record id="payment_method_clickpayapplepay" model="account.payment.method">
+		<field name="name"><![CDATA[ClickPay - ApplePay]]></field>
+		<field name="code">clickpayapplepay</field>
+		<field name="payment_type">inbound</field>
+	</record>
+    <record id="payment_method_clickpayapplepayhosted" model="account.payment.method">
+		<field name="name"><![CDATA[ClickPay - ApplePay Hosted]]></field>
+		<field name="code">clickpayapplepayhosted</field>
+		<field name="payment_type">inbound</field>
+	</record>
+
+</odoo>

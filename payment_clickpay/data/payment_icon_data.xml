@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="payment_icon_paynow_clickpay" model="payment.icon">
+        <field name="sequence">10</field>
+        <field name="name">ClickPay</field>
+        <field name="image" type="base64" file="payment_clickpay/static/description/logo.png"/>
+    </record>
+    <record id="payment_icon_paynow_clickpayamex" model="payment.icon">
+        <field name="sequence">10</field>
+        <field name="name">Amex</field>
+        <field name="image" type="base64" file="payment_clickpay/static/description/amex.png"/>
+    </record>
+    <record id="payment_icon_paynow_clickpaymada" model="payment.icon">
+        <field name="sequence">10</field>
+        <field name="name">Mada</field>
+        <field name="image" type="base64" file="payment_clickpay/static/description/mada-checkout.png"/>
+    </record>
+    
+</odoo>
