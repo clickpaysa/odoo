@@ -13,12 +13,14 @@
         ],
     },
     'data': [
-        'views/payment_clik_templates.xml',
+        'views/payment_click_templates.xml',
         'views/payment_provider_views.xml',
-		'data/payment_icon_data.xml',
         'data/payment_provider_data.xml',
     ],
+    'post_init_hook':'post_init_hook',
+    'uninstall_hook':'uninstall_hook',
     'images': ['images/main_screenshot.png'],
     'application': True,
     'installable': True,
+    'license': 'LGPL-3',
 }

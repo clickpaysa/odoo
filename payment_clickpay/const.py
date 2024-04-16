@@ -10,16 +10,24 @@ SUPPORTED_CURRENCIES = {
         'SAR'
         },
     'clickpaymada': {
-        'SAR',
+        'SAR'
         },
     'clickpayapplepay': {
         'AED',
-        'SAR',
-        }       
+        'SAR'
+        },
+    'clickpayapplepayhosted':{
+        'AED',
+        'SAR'
+        },
 }
 
-# SUPPORTED_CURRENCIES = {
-#     'SAR',
-#     'USD',
-#     'CAD',
-# }
+DEFAULT_PAYMENT_METHODS_CODES = [
+    # Primary payment methods.
+    'card',
+    # Brand payment methods.
+    'visa',
+    'mastercard',
+    'amex',
+    'discover',
+]

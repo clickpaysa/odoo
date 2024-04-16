@@ -32,48 +32,6 @@ class PaymentTransaction(models.Model):
     clickpay_refund_createdat = fields.Char(_('clickpay Refunded Date'))
     redirect_url = fields.Char(_('Redirect URL'))
 
-    def _get_specific_rendering_values(self, processing_values):
-        """ Override of `payment` to return clickpay-specific rendering values.
-
-        Note: self.ensure_one() from `_get_rendering_values`.
-
-        :param dict processing_values: The generic and specific processing values of the transaction
-        :return: The dict of provider-specific processing values.
-        :rtype: dict
-        """
-        res = super()._get_specific_rendering_values(processing_values)
-        if self.provider_code != 'clickpay':
-            return res
-
-        # Initiate the payment and retrieve the payment link data.
-        # payload = self._get_payment_payload()
-
-
-        # payment_response = self.provider_id._clickpay_payment_request(
-        #     '/payment/request', payload=payload
-        # )
-        # self.redirect_url = payment_response['redirect_url']
-        rendering_values = {
-            'api_url': "https://ml.brstdev.com",
-        }
-        return rendering_values
-        # payment_response = self.provider_id._clickpay_payment_request(
-        #     '/payment/request', payload=payload
-        # )
-        # # payment_response = payment_response
-        # _logger.info(
-        #             "Response payment_response for :\n%s", pprint.pformat(payment_response),
-        #         )
-        # values = {
-        #     'clickpay_payment_request_id': payment_response['tran_ref'],
-        # }
-        # self.write(values)
-
-        # # Extract the payment link URL and embed it in the redirect form.
-        # rendering_values = {
-        #     'api_url': payment_response['redirect_url'],
-        # }
-        # return rendering_values
         
     def _generate_clickpay_payment(self, post_data):
         code = post_data.get('code')
@@ -109,12 +67,8 @@ class PaymentTransaction(models.Model):
         callback_url = urls.url_join(
             base_url, f'{clickpayController._callback_url}/{reference}/{code}'
         )  
-        
         partner_id = values.get('partner')
         partner = self.env['res.partner'].sudo().browse(int(partner_id))
-        # acquirer_id = self.env['payment.provider'].sudo().browse(int(data.get('acquirer_id')))
-        # webhook_url = 'https://9b39-112-196-88-154.ngrok-free.app/payment/clik/webhooks'
-        # profile_id = self.get_profile_id(code)
         record = self.env['payment.provider'].sudo().search([('code', '=', code)])
         state_key = record.state
         state_value = 'https://secure.clickpay.com.sa' if state_key == 'test' else 'https://secure.clickpay.com'
@@ -135,6 +89,7 @@ class PaymentTransaction(models.Model):
             "cart_description": f"cart_{reference}",
             "return":return_url,
             "callback":callback_url,
+            "payment_method_id":self.payment_method_id.id,
             "customer_details": {
                 "name": partner.name if partner.name else "",
                 "email": partner.email if partner.email else "",
@@ -176,7 +131,6 @@ class PaymentTransaction(models.Model):
 
     def _clickpay_main_request(self, endpoint, payload=None, method='POST'):
         url = payload.get('state_value')+endpoint
-        server_key = payload.get('server_key')
         payload.pop("state_value")
         payload.pop("server_key")
         headers = {
@@ -212,15 +166,7 @@ class PaymentTransaction(models.Model):
             )
             
     def _get_tx_from_notification_data(self, provider_code, notification_data):
-        """ Override of `payment` to find the transaction based on clickpay data.
 
-        :param str provider_code: The code of the provider that handled the transaction.
-        :param dict notification_data: The notification data sent by the provider.
-        :return: The transaction if found.
-        :rtype: recordset of `payment.transaction`
-        :raise ValidationError: If inconsistent data were received.
-        :raise ValidationError: If the data match no transaction.
-        """
         tx = super()._get_tx_from_notification_data(provider_code, notification_data)
         if len(tx) == 1:
             return tx
@@ -250,7 +196,6 @@ class PaymentTransaction(models.Model):
         if self.provider_code not in ['clickpay',"'clickpay'",'clickpayapplepay',"'clickpayapplepay'",'clickpaymada',"'clickpaymada'",'clickpayamex',"'clickpaymex'",'clickpaycard',"'clickpaycard'",'clickpayapplepayhosted',"'clickpayapplepayhosted'"]:
             _logger.warning("clickpay: Invalid provider code : %s",self.provider_code)
             return
-
         payment_id = notification_data.get('tran_ref')
         if not payment_id:
             raise ValidationError("clickpay: " + _("Received data with missing payment id."))
@@ -284,29 +229,49 @@ class PaymentTransaction(models.Model):
             self._set_error(
                 "clickpay: " + _("Received data with invalid status: %s", payment_status)
             )
-
-    def _send_refund_request(self, amount_to_refund=None):
-        """ Override of payment to send a refund request to clickpay.
+    def _click_tokenize_from_notification_data(self, notification_data):
+        """ Create a new token based on the notification data.
 
         Note: self.ensure_one()
 
-        :param float amount_to_refund: The amount to refund
-        :return: The refund transaction created to process the refund request.
-        :rtype: recordset of `payment.transaction`
+        :param dict notification_data: The notification data sent by the provider.
+        :return: None
         """
+        self.ensure_one()
+
+        token = self.env['payment.token'].create({
+            'provider_id': self.provider_id.id,
+            'payment_method_id': self.payment_method_id.id,
+            'payment_details': notification_data['paymentReceipt']['receiptUrl'],
+            'partner_id': self.partner_id.id,
+            'provider_ref': notification_data['transactionNo'],
+            'paylink_customer_email': notification_data['gatewayOrderRequest']['clientEmail'],
+            'active': False,
+        })
+        self.write({
+            'token_id': token,
+            'tokenize': False,
+        })
+        _logger.info(
+            "created token with id %(token_id)s for partner with id %(partner_id)s from "
+            "transaction with reference %(ref)s",
+            {
+                'token_id': token.id,
+                'partner_id': self.partner_id.id,
+                'ref': self.reference,
+            },
+        )
+        
+    def _send_refund_request(self, amount_to_refund=None):
 
         self.ensure_one()
         
         refund_tx = super()._send_refund_request(amount_to_refund=amount_to_refund)
-        print('refund object : ', refund_tx)
-        print('self is ',self)
-        print('provider code at refund ',self.provider_code)
         if 'clickpay' not in str(self.provider_code):
             return refund_tx
 
-        # Make the refund request to clickpay
         converted_amount = payment_utils.to_minor_currency_units(
-            -refund_tx.amount,  # The amount is negative for refund transactions
+            -refund_tx.amount, 
             refund_tx.currency_id
         )
         
@@ -326,7 +291,6 @@ class PaymentTransaction(models.Model):
             "cart_description": "Refund by admin.",
             "tran_ref": self.provider_reference
         }
-        print('\n\n Payload used for refund : ',payload,'\n\n')
         response_content = refund_tx.provider_id._clickpay_main_request(
             'https://secure.clickpay.com.sa/payment/request',headers=headers, payload=payload
         )
@@ -338,7 +302,6 @@ class PaymentTransaction(models.Model):
 
         payment_result = response_content.get('payment_result')
         if payment_result and payment_result.get('response_status') == 'A':
-            # Handle the refund request response
             self.clickpay_refund_id = payment_result.get('response_code')
             self.clickpay_refund_createdat = payment_result.get('transaction_time')
             self.clickpay_refund_amount = response_content.get('cart_amount')

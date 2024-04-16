@@ -4,7 +4,7 @@ import logging,pprint,json,hashlib,hmac,os
 
 import threading
 from werkzeug.exceptions import Forbidden
-import requests,time
+import requests
 from odoo import http
 from odoo.exceptions import ValidationError
 from odoo.http import request
@@ -31,20 +31,20 @@ class clickpayController(http.Controller):
         try:
             url = json.loads(request.httprequest.data).get('url')
             payload = {
-                'merchantIdentifier':request.env['payment.provider'].search([['code','=','clickpayapplepay']]).clickpayapplepay_merchantIdentifier,
-                'displayName':request.env['payment.provider'].search([['code','=','clickpayapplepay']]).clickpayapplepay_displayName,
-                'initiative':request.env['payment.provider'].search([['code','=','clickpayapplepay']]).clickpayapplepay_initiative,
-                'initiativeContext':request.env['payment.provider'].search([['code','=','clickpayapplepay']]).clickpayapplepay_initiativeContext,
+                'merchantIdentifier':request.env['payment.provider'].sudo().search([['code','=','clickpayapplepay']]).clickpayapplepay_merchantIdentifier,
+                'displayName':request.env['payment.provider'].sudo().search([['code','=','clickpayapplepay']]).clickpayapplepay_displayName,
+                'initiative':request.env['payment.provider'].sudo().search([['code','=','clickpayapplepay']]).clickpayapplepay_initiative,
+                'initiativeContext':request.env['payment.provider'].sudo().search([['code','=','clickpayapplepay']]).clickpayapplepay_initiativeContext,
             }
             base_dir = os.getcwd()+"/" 
             ssl_cert_path = base_dir+'merchant-cert.cer'
             with open(ssl_cert_path,'w+') as file:
-                text = request.env['payment.provider'].search([['code','=','clickpayapplepay']]).clickpayapplepay_cert_file
+                text = request.env['payment.provider'].sudo().search([['code','=','clickpayapplepay']]).clickpayapplepay_cert_file
                 if text is False : raise ValueError('Both files should be added to proceed : (certificate,key)')
                 file.write(base64.decodebytes(text).decode())
             cert_key_path = base_dir+'merchant-cert.key'
             with open(cert_key_path,'w+') as file:
-                text = request.env['payment.provider'].search([['code','=','clickpayapplepay']]).clickpayapplepay_key_file
+                text = request.env['payment.provider'].sudo().search([['code','=','clickpayapplepay']]).clickpayapplepay_key_file
                 if text is False : raise ValueError('Both files should be added to proceed : (certificate,key)')
                 file.write(base64.decodebytes(text).decode())
             cert =  (ssl_cert_path, cert_key_path)
@@ -58,7 +58,7 @@ class clickpayController(http.Controller):
     @http.route('/payment/clickpay/applepay/make_payment',methods=['POST'],auth='public',csrf=False)
     def applepay_make_payment(self,**post):
         data = json.loads(request.httprequest.data)
-        server_key = request.env['payment.provider'].search([['code','=','clickpayapplepay']]).clickpayapplepay_server_key
+        server_key = request.env['payment.provider'].sudo().search([['code','=','clickpayapplepay']]).clickpayapplepay_server_key
         if not server_key:_logger.exception("Server key must be set for clickpayapplepay");raise ValueError('Server key must be set for clickpayapplepay')
         headers = {'Content-Type':'application/json','Authorization': server_key }
         payload = request.env['payment.transaction'].sudo()._generate_clickpay_payment(data) 
@@ -75,8 +75,7 @@ class clickpayController(http.Controller):
         headers = {
                 'authorization': eval(f"request.env['payment.provider'].search([['code','=','{data.get('code')}']]).{data.get('code')}_server_key"),
                 'Content-Type': 'application/json',
-                'Accept':'application/json',
-
+                'Accept':'application/json'
             }
         cookies = {'session_id':request.httprequest.cookies.get('session_id')}
         data['values'] = {'partner':data.get('partner'),'currency':data.get('currency'),'amount':data.get('amount')}
@@ -96,8 +95,6 @@ class clickpayController(http.Controller):
 
     @http.route(_iframe_payment, type='json', auth='public')
     def handle_iframe_orders_from_checkout(self, **post):
-        reference = post.get('reference')
-        values = post.get('values')
         code = post.get('code')
         if code == 'clickpayapplepayhosted':
             try:
@@ -147,7 +144,6 @@ class clickpayController(http.Controller):
                 _client_key = code + '_client_key'
                 if hasattr(payment_provider, payment_mode_key):
                     payment_mode = getattr(payment_provider, payment_mode_key)
-                    print('payment mode is : ',payment_mode)
                     _id = getattr(payment_provider, _client_key)
                     if payment_mode == "managed_form":
                         response = { 
@@ -186,8 +182,6 @@ class clickpayController(http.Controller):
                         'error_message': 'Something Went Wrong!!'
                     }    
                     return response
-                # response = payment_provider._clickpay_payment_request('/payment/request', payload=post)
-                # return {'success': True, 'redirect_url': response.get('redirect_url')}
             except Exception as e: 
                 _logger.exception("Error while processing ClickPay payment request: %s", str(e))
                 return {'status': False, 'error_message': 'Error processing payment request'}
@@ -217,11 +211,13 @@ class clickpayController(http.Controller):
         _logger.info("Callback received from payment gateway with code:\n%s", pprint.pformat(code))
         try:
             payment_result = data.get('payment_result')
+            print('payment result : ',payment_result)
             if payment_result.get('response_status') == 'A':data['status'] = 'completed' 
             elif payment_result.get('response_status') == 'C':data['status'] = 'canceled'
             else: data['status'] = 'failed'
             tx_sudo = request.env['payment.transaction'].sudo()._get_tx_from_notification_data(code, data)
             self.verify_signature(body,signature,server_key)
+            tx_sudo._handle_notification_data(code, data)
         except Exception as e:
             _logger.exception("An error occurred while processing webhook: %s", str(e))
         return 'Ok'
@@ -232,14 +228,10 @@ class clickpayController(http.Controller):
         """
         Verify the signature using HMAC-SHA256 hashing algorithm.
         """
-        # calculated_signature = hmac.new(server_key.encode(), body, hashlib.sha256).hexdigest()
-        # return hmac.compare_digest(calculated_signature, signature) 
         calculated_signature = hmac.new(server_key.encode(), body, hashlib.sha256).hexdigest()
         if not hmac.compare_digest(calculated_signature, signature) :
             _logger.warning("ClickPay:Received notification with invalid signature.")
             raise Forbidden()
-
- 
         
     def _clickpay_main_api_request(self, endpoint, payload=None, main_code=None, method='POST'):
         record = request.env['payment.provider'].sudo().search([('code', '=', main_code)])
@@ -261,23 +253,18 @@ class clickpayController(http.Controller):
                 payload['tokenise'] = '2'
             if hide_shipping_info:
                 payload['hide_shipping'] = True
-            
             payload['profile_id'] = profile_id
             payload['tran_type'] = payment_action
-            # payload['profile_id'] = hide_shipping_info
-
             headers = {
                 'authorization': server_key,
                 'Content-Type': 'application/json'
             }
-            # cookies = {""}
+            cookies = {"session_id":request.httprequest.cookies.get('session_id')}
             try:
                 if method == 'GET':
                     response = requests.get(url, params=payload, headers=headers, timeout=20)
                 else:
-                    response = requests.post(url, json=payload, headers=headers)
-
-                    # response = requests.post(url, data=dict(payload), headers=headers, timeout=20)
+                    response = requests.post(url, json=payload, headers=headers,cookies=cookies)
                     _logger.info(
                         "payload for %s :\n%s",
                         main_code, pprint.pformat(payload),
@@ -287,21 +274,15 @@ class clickpayController(http.Controller):
                         return response.json() 
                                 
                     except requests.exceptions.HTTPError:
-                        _logger.exception(
-                            "Invalid API request at %s with data:\n%s", url, pprint.pformat(payload),
-                        )
+                        _logger.exception("Invalid API request at %s with data:\n%s", url, pprint.pformat(payload))
                         response_content = response.json()
                         error_code = response_content.get('error')
                         error_message = response_content.get('message')
-                        raise ValidationError("clickpay: " + _(
-                            "The communication with the API failed. clickpay Payment Gateway gave us the following "
-                            "information: '%s' (code %s)", error_message, error_code
-                        ))                    
+                        raise ValidationError("clickpay: " + _("The communication with the API failed. clickpay Payment Gateway gave us the following "
+                            "information: '%s' (code %s)", error_message, error_code))                    
             except (requests.exceptions.ConnectionError, requests.exceptions.Timeout):
                 _logger.exception("Unable to reach endpoint at %s", url)
-                raise ValidationError(
-                    "clickpay: " + _("Could not establish the connection to the API.")
-                )    
+                raise ValidationError("clickpay: " + _("Could not establish the connection to the API."))    
         else:
             
             return False

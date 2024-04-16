@@ -9,7 +9,7 @@ import requests
 from werkzeug import urls
 from odoo import _, api, fields, models, http
 from odoo.exceptions import ValidationError
-from odoo.addons.payment_clickpay.const import SUPPORTED_CURRENCIES
+from odoo.addons.payment_clickpay.const import SUPPORTED_CURRENCIES, DEFAULT_PAYMENT_METHODS_CODES
 from odoo.addons.payment_clickpay.controllers.main import clickpayController
 
 
@@ -159,6 +159,11 @@ class Paymentprovider(models.Model):
         ('auth', 'Authorize'),
         ('sale', 'Sale')], string='Payment Action', default='sale',required=True)
     clickpayapplepayhosted_enable_tokenization = fields.Boolean(string='Enable Tokenization')
+    
+    # odoo 17
+    display_as = fields.Char(
+        string="Displayed as", help="Description of the provider for customers",
+        translate=True)
 
     def _compute_feature_support_fields(self):
         """ Override of `payment` to enable additional features. """
@@ -170,7 +175,9 @@ class Paymentprovider(models.Model):
     
     @api.model   
     def _get_compatible_providers(self, *args, currency_id=None, **kwargs):
+        print('currency id : ',currency_id)
         providers = super()._get_compatible_providers(*args, currency_id=currency_id, **kwargs)
+        print("all providers : ",providers)
         currency = self.env['res.currency'].browse(currency_id).exists()
         if currency:
                 for provider_code, supported_currencies in SUPPORTED_CURRENCIES.items():
@@ -178,22 +185,9 @@ class Paymentprovider(models.Model):
                         providers = providers.filtered(lambda p: p.code != provider_code)
         user_agent = http.request.httprequest.headers.get('User-Agent')
         if not (('iPhone' in user_agent or 'iPad' in user_agent or ('Macintosh' in user_agent and 'Intel Mac OS X' in user_agent)) and 'Safari' in user_agent and 'Chrome' not in user_agent):
-            return providers.filtered(lambda p : p.code not in  ['clickpayapplepay','clickpayapplepayhosted'])
+            providers = providers.filtered(lambda p : p.code not in  ['clickpayapplepay','clickpayapplepayhosted'])
+        print('compatible provider : ',providers)
         return providers        
-    
-    
-    # @api.model    
-    # def _get_supported_currencies(self):
-    #     SUPPORTED_CURRENCIESS = ['SAR', 'EUR']
-    #     """ Override of `payment` to return the supported currencies. """
-    #     supported_currencies = super()._get_supported_currencies()
-    #     print(supported_currencies)
-    #     if self.code == 'clickpayamex':
-    #         supported_currencies = supported_currencies.filtered(
-    #             lambda c: c.name in SUPPORTED_CURRENCIESS
-    #         )
-    #     return supported_currencies 
-
 
     def _clickpay_verify_webhook(self, data):
         signing_string = ''
@@ -202,11 +196,36 @@ class Paymentprovider(models.Model):
                 signing_string += str(k)+''+str(data[k])
 
         signature = hmac.new(
-            bytes(self.clik_api_salt, 'utf-8'),
+            bytes(self.click_api, 'utf-8'),
             msg=bytes(signing_string, 'utf-8'),
             digestmod=hashlib.sha256
         ).hexdigest()
         return signature
+    
+    # def _get_default_payment_method_codes(self):
+    #     """ Override of `payment` to return the default payment method codes. """
+    #     default_codes = super()._get_default_payment_method_codes()
+    #     if self.code == 'clickpay' or self.code == 'clickpaycard' or self.code == 'clickpayamex' or self.code == 'clickpaymada' or self.code == 'clickpayapplepay' or self.code == 'clickpayapplepayhosted':
+    #         default_codes =  [
+    #             self.code,
+    #             'card',
+    #             'netbanking',
+    #             'upi',
+    #             'visa',
+    #             'mastercard',
+    #             'amex',
+    #             'discover',
+    #         ]
+            
+    #     print('\n\n Returning codes : ',default_codes,'\n\n  ')
+    #     return default_codes
+        
+    def _get_default_payment_method_codes(self):
+        """ Override of `payment` to return the default payment method codes. """
+        default_codes = super()._get_default_payment_method_codes()
+        if self.code == 'clickpay' or self.code == 'clickpayamex' or self.code == 'clickpaymada' or self.code == 'clickpaycard' or self.code == 'clickpayapplepay' or self.code == 'clickpayapplepayhosted':
+            return DEFAULT_PAYMENT_METHODS_CODES
+        return default_codes
         
     def _clickpay_main_request(self, endpoint,headers, payload=None, main_code=None, method='POST'):
 

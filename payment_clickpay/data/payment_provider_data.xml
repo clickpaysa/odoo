@@ -58,35 +58,29 @@
         <!-- <field name="inline_form_view_id" ref="clickpay_test_checkout_inline_form"/> -->
     </record>
 
-	<record id="payment_method_clickpay" model="account.payment.method">
+	<record id="payment_method_clickpay" model="payment.method">
 		<field name="name"><![CDATA[Clickpay Payment Gateway]]></field>
 		<field name="code">clickpay</field>
-		<field name="payment_type">inbound</field>
 	</record>
-	<record id="payment_method_clickpaycard" model="account.payment.method">
+	<record id="payment_method_clickpaycard" model="payment.method">
 		<field name="name"><![CDATA[ClickPay - CreditCard]]></field>
 		<field name="code">clickpaycard</field>
-		<field name="payment_type">inbound</field>
 	</record>
-    <record id="payment_method_clickpaymada" model="account.payment.method">
+    <record id="payment_method_clickpaymada" model="payment.method">
 		<field name="name"><![CDATA[ClickPay - Mada]]></field>
 		<field name="code">clickpaymada</field>
-		<field name="payment_type">inbound</field>
 	</record>
-    <record id="payment_method_clickpayamex" model="account.payment.method">
+    <record id="payment_method_clickpayamex" model="payment.method">
 		<field name="name"><![CDATA[ClickPay - Amex]]></field>
 		<field name="code">clickpayamex</field>
-		<field name="payment_type">inbound</field>
 	</record>
-    <record id="payment_method_clickpayapplepay" model="account.payment.method">
+    <record id="payment_method_clickpayapplepay" model="payment.method">
 		<field name="name"><![CDATA[ClickPay - ApplePay]]></field>
 		<field name="code">clickpayapplepay</field>
-		<field name="payment_type">inbound</field>
 	</record>
-    <record id="payment_method_clickpayapplepayhosted" model="account.payment.method">
+    <record id="payment_method_clickpayapplepayhosted" model="payment.method">
 		<field name="name"><![CDATA[ClickPay - ApplePay Hosted]]></field>
 		<field name="code">clickpayapplepayhosted</field>
-		<field name="payment_type">inbound</field>
 	</record>
 
 </odoo>
