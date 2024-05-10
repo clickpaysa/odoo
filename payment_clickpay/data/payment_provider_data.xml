@@ -8,7 +8,6 @@
         <field name="image_128" type="base64" file="payment_clickpay/static/description/logo.png"/>
         <field name="module_id" ref="base.module_payment_clickpay"/>
         <field name="inline_form_view_id" ref="redirect_form"/>
-        <!-- <field name="inline_form_view_id" ref="clickpay_test_checkout_inline_form"/> -->
     </record>
     <record id="payment_provider_clickpaycard" model="payment.provider">
         <field name="name">ClickPay - CreditCard</field>
@@ -17,7 +16,6 @@
         <field name="image_128" type="base64" file="payment_clickpay/static/description/logo.png"/>
         <field name="module_id" ref="base.module_payment_clickpay"/>
         <field name="inline_form_view_id" ref="redirect_form"/>
-        <!-- <field name="inline_form_view_id" ref="clickpay_test_checkout_inline_form"/> -->
     </record>    
     <record id="payment_provider_clickpaymada" model="payment.provider">
         <field name="name">ClickPay - Mada</field>
@@ -26,7 +24,6 @@
         <field name="image_128" type="base64" file="payment_clickpay/static/description/logo.png"/>
         <field name="module_id" ref="base.module_payment_clickpay"/>
         <field name="inline_form_view_id" ref="redirect_form"/>
-        <!-- <field name="inline_form_view_id" ref="clickpay_test_checkout_inline_form"/> -->
     </record>
     <record id="payment_provider_clickpayamex" model="payment.provider">
         <field name="name">ClickPay - Amex</field>
@@ -35,7 +32,6 @@
         <field name="image_128" type="base64" file="payment_clickpay/static/description/logo.png"/>
         <field name="module_id" ref="base.module_payment_clickpay"/>
         <field name="inline_form_view_id" ref="redirect_form"/>
-        <!-- <field name="inline_form_view_id" ref="clickpay_test_checkout_inline_form"/> -->
     </record>
     
 	<record id="payment_provider_clickpayapplepay" model="payment.provider">
@@ -45,7 +41,6 @@
         <field name="image_128" type="base64" file="payment_clickpay/static/description/logo.png"/>
         <field name="module_id" ref="base.module_payment_clickpay"/>
         <field name="inline_form_view_id" ref="clickpayapple_form"/>
-        <!-- <field name="inline_form_view_id" ref="clickpay_test_checkout_inline_form"/> -->
     </record>
     
     <record id="payment_provider_clickpayapplepayhosted" model="payment.provider">
@@ -55,32 +50,37 @@
         <field name="image_128" type="base64" file="payment_clickpay/static/description/logo.png"/>
         <field name="module_id" ref="base.module_payment_clickpay"/>
         <field name="inline_form_view_id" ref="clickpayapplehosted_form"/>
-        <!-- <field name="inline_form_view_id" ref="clickpay_test_checkout_inline_form"/> -->
     </record>
 
 	<record id="payment_method_clickpay" model="payment.method">
 		<field name="name"><![CDATA[Clickpay Payment Gateway]]></field>
 		<field name="code">clickpay</field>
+        <field name="image" type="base64" file="payment_clickpay/static/description/logo.png"/>
 	</record>
 	<record id="payment_method_clickpaycard" model="payment.method">
 		<field name="name"><![CDATA[ClickPay - CreditCard]]></field>
 		<field name="code">clickpaycard</field>
+        <field name="image" type="base64" file="payment_clickpay/static/description/logo.png"/>
 	</record>
     <record id="payment_method_clickpaymada" model="payment.method">
 		<field name="name"><![CDATA[ClickPay - Mada]]></field>
 		<field name="code">clickpaymada</field>
+        <field name="image" type="base64" file="payment_clickpay/static/description/logo.png"/>
 	</record>
     <record id="payment_method_clickpayamex" model="payment.method">
 		<field name="name"><![CDATA[ClickPay - Amex]]></field>
 		<field name="code">clickpayamex</field>
+        <field name="image" type="base64" file="payment_clickpay/static/description/logo.png"/>
 	</record>
     <record id="payment_method_clickpayapplepay" model="payment.method">
 		<field name="name"><![CDATA[ClickPay - ApplePay]]></field>
 		<field name="code">clickpayapplepay</field>
+        <field name="image" type="base64" file="payment_clickpay/static/description/logo.png"/>
 	</record>
     <record id="payment_method_clickpayapplepayhosted" model="payment.method">
 		<field name="name"><![CDATA[ClickPay - ApplePay Hosted]]></field>
 		<field name="code">clickpayapplepayhosted</field>
+        <field name="image" type="base64" file="payment_clickpay/static/description/logo.png"/>
 	</record>
 
 </odoo>

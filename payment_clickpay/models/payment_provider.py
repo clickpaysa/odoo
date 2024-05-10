@@ -37,7 +37,7 @@ class Paymentprovider(models.Model):
 
     @api.model
     def _get_app_version(self):
-        return "1.0"
+        return "1.1"
 
     app_version = fields.Char(string='App Version', default=_get_app_version, readonly=True)
     # enabled = fields.Boolean(string='Enabled', default=True)
